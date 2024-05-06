@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero my-10">
       <div className="hero-content flex-col lg:flex-row">
         <div className="relative lg:w-1/2">
           <img
