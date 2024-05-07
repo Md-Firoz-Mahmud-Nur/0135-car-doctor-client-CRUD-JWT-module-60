@@ -2,15 +2,17 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
-const Login = () => {
-  const { signIn } = useContext(AuthContext);
-  const handleLogin = (e) => {
+const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
+
+  const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
-    signIn(email, password)
+    console.log(name, email, password);
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -27,8 +29,20 @@ const Login = () => {
           <img src="../../../assets/images/login/login.svg" alt="" />
         </div>
         <div className="card w-full max-w-sm shrink-0 bg-base-100 shadow-2xl">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-center text-3xl font-bold">Login!</h1>
+          <form onSubmit={handleSignUp} className="card-body">
+            <h1 className="text-center text-3xl font-bold">Sign Up!</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="name"
+                name="name"
+                placeholder="Your Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -63,9 +77,9 @@ const Login = () => {
             </div>
           </form>
           <p className="ml-4">
-            New to doctors
-            <Link to="/signUp" className="btn btn-link p-1">
-              Sign Up
+            Already have an account?
+            <Link to="/login" className="btn btn-link p-1">
+              Login
             </Link>
           </p>
         </div>
@@ -74,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
