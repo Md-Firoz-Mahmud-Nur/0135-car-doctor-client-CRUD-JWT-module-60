@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, signOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
-    signOut()
+    logOut()
       .then(() => {})
-      .catch();
+      .catch(error=>console.log(error));
   };
 
   const navItems = (
